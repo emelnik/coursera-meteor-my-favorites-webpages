@@ -21,15 +21,15 @@ if (Meteor.isClient) {
 	/////
 	// template helpers 
 	/////
-	Template.body.helpers({username:function(){
+	Template.website_header.helpers({username:function(){
 		if (Meteor.user()){
-			return "Welcome "+Meteor.user().username;
-		}
-		else {
-			return "Please, Sign in or Create an account to Use this site";
-		}
+ 		 return Meteor.user().username;
+    //return Meteor.user().emails[0].address;
 	}
-
+	else {
+	  return "anonymous internet user";
+	}
+	}
 	});
 
 	// helper function that returns all available websites

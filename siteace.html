@@ -5,8 +5,8 @@
 <body>
 	
 	
-	
-</body>
+</body>	
+
 
 <template name="ApplicationLayout">
   {{> yield "navbar"}}
@@ -20,8 +20,7 @@
 	    <div class="navbar-header">
 	      <a class="navbar-brand" href="#">
 	        Site Ace
-	      </a>
-	  
+	      </a>	  
 	    </div>
 	  <div class="nav navbar-nav navbar-right">
 	  	{{> loginButtons align="right"}}
@@ -40,12 +39,13 @@
 </template>
 	
 <template name="website_header">
-	<h1>Social website aggregator</h1>
-	<h2>{{username}}</h2>
+	<h1>Social website aggregator</h1>	
+	<h2>Welcome back {{username}}!</h2>
 </template>
 <template name="website_form">
 	{{#if currentUser}}
 	<a class="btn btn-default js-toggle-website-form" href="#">
+		You can add your favorite websites
   		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 	</a>
 	{{/if}}
