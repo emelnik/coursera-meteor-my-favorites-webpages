@@ -1,0 +1,10 @@
+/* CSS declarations go here */
+.hidden_div{
+	display:none;
+}
+
+/* style login */
+.navbar-right{
+margin-right: 20px;
+    line-height: 50px;
+}
