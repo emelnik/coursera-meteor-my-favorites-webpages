@@ -227,13 +227,5 @@ if (Meteor.isServer) {
     }
   });
 
-HTTP.get('http://www.uv.es/', function(error, result) {
-  if (error) {
-      // some error occurred
-  } else {
-    console.log(result);
-  }
-});
-
 }
 
