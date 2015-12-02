@@ -18,7 +18,7 @@
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="http://blog.tupublicidadeninternet.es:3000/">
+	      <a class="navbar-brand" href="/">
 	        Site Ace
 	      </a>	  
 	    </div>
@@ -45,7 +45,7 @@
 	
 <template name="website_header">
 	<h1>Social website aggregator</h1>	
-	<h2>Welcome back {{username}}!</h2>
+	<h2>Welcome {{username}}!</h2>
 </template>
 <template name="website_form">
 	{{#if currentUser}}
@@ -119,6 +119,34 @@
 		<p>
 			Added on <span>{{createdOn}}</span>
 		</p>
+		{{> commentSubmit}}
 		</div>
 	</div>
 </template>
+
+
+<template name="postPage">
+  {{> postItem}}
+  <ul class="comments">
+    {{#each comments}}
+      {{> comment}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="commentSubmit">
+  <form name="comment" class="comment-form">
+    <div class="control-group">
+        <div class="controls">
+            <label for="body">Comment on this website</label>
+            <textarea name="body" rows="4" cols="70"></textarea>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn">Add Comment</button>
+        </div>
+    </div>
+  </form>
+</template>
+

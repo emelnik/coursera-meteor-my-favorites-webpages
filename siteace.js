@@ -1,5 +1,9 @@
 Websites = new Mongo.Collection("websites");
 
+// collections/comments.js
+
+Comments = new Mongo.Collection('comments');
+
 if (Meteor.isClient) {
 	/// routing 
 	Router.configure({
@@ -36,10 +40,10 @@ if (Meteor.isClient) {
 	Template.website_header.helpers({username:function(){
 		if (Meteor.user()){
  		 return Meteor.user().username;
-    //return Meteor.user().emails[0].address;
+    
 	}
 	else {
-	  return "anonymous internet user";
+	  return "anonymous internet user / LogIn to submit webpages, vote and comment";
 	}
 	}
 	});
@@ -109,6 +113,27 @@ if (Meteor.isClient) {
 
 		}
 	});
+
+	/// Comments
+
+Template.commentSubmit.events({
+	'submit form':function(event){
+		var body = event.target.body.value;
+		var website_id = $(location).attr('href').substr( $(location).attr('href').length - 17 );
+		if (Meteor.user()){
+			 Comments.insert({
+	    		body:body,
+	    		website_id:website_id,	
+	    		createdOn:new Date(),
+	    		createdBy:Meteor.user()._id
+    			});	
+			}
+		return false;
+		
+	}
+
+});
+
 }
 
 
@@ -145,3 +170,4 @@ if (Meteor.isServer) {
     }
   });
 }
+
