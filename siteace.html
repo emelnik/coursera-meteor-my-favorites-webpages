@@ -18,7 +18,7 @@
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">
+	      <a class="navbar-brand" href="http://blog.tupublicidadeninternet.es:3000/">
 	        Site Ace
 	      </a>	  
 	    </div>
@@ -37,6 +37,11 @@
 		{{> website_list}}
 	</div>
 </template>
+
+<template name="main2">
+	{{> website_form}}
+	{{> website_list}}
+</template>
 	
 <template name="website_header">
 	<h1>Social website aggregator</h1>	
@@ -45,7 +50,7 @@
 <template name="website_form">
 	{{#if currentUser}}
 	<a class="btn btn-default js-toggle-website-form" href="#">
-		You can add your favorite websites
+		You can add your favorite websites  
   		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 	</a>
 	{{/if}}
@@ -81,7 +86,7 @@
 <!-- template that displays individual website entries -->
 <template name="website_item">
 <li>
-	<a href="{{url}}">{{title}}</a>
+	<a href="{{url}}">{{title}}</a><a href="/website/{{_id}}">More details about this place</a>
 	<p>
 		{{description}}
 	</p>
@@ -96,4 +101,24 @@
 	</p>
 	<!-- you will be putting your up and down vote buttons in here! -->
 </li>
+</template>
+
+<template name="website">
+ 	<div class="container">
+ 		<div class="row">
+	 	<h1><a href="{{url}}">{{title}}</a></h1>
+		<p>
+			{{description}}
+		</p>
+		<a href="#" class="btn btn-default js-upvote">
+			<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>{{upscore}}
+		</a>
+		<a href="#" class="btn btn-default js-downvote">
+			<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>{{downscore}}
+		</a>
+		<p>
+			Added on <span>{{createdOn}}</span>
+		</p>
+		</div>
+	</div>
 </template>
