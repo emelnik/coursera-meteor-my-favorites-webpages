@@ -55,6 +55,12 @@ if (Meteor.isClient) {
 		}
 	});
 
+	Template.comments_list.helpers({
+		comments:function(){
+			var website_id = Session.get("websiteid");
+			return Comments.find({website_id:website_id}, {sort:{createdOn:1}});
+		}
+	});
 
 	/////
 	// template events 
@@ -84,13 +90,21 @@ if (Meteor.isClient) {
 			}
 
 			return false;// prevent the button from reloading the page
+		},
+		"click .js-moreDetails":function(event){
+
+			var website_id = this._id;
+			console.log("Link to website page");
+
+			// put the code in here to remove a vote from a website!
+			Session.set("websiteid", website_id);
+
+			//return false;// prevent the button from reloading the page
 		}
 	})
 
 	Template.website_form.events({
-		"click .js-toggle-website-form":function(event){
-			$("#website_form").toggle('slow');
-		}, 
+		
 		"submit .js-save-website-form":function(event){
 
 			// here is an example of how to get the url out of the form:
@@ -106,7 +120,7 @@ if (Meteor.isClient) {
 	    		url:url, 
 	    		description:description, 
 	    		createdOn:new Date(),
-	    		createdBy:Meteor.user()._id
+	    		createdBy:Meteor.user()._id	    		
     		});	
 			}
 			return false;// stop the form submit from reloading the page
@@ -119,7 +133,7 @@ if (Meteor.isClient) {
 Template.commentSubmit.events({
 	'submit form':function(event){
 		var body = event.target.body.value;
-		var website_id = $(location).attr('href').substr( $(location).attr('href').length - 17 );
+		var website_id = Session.get("websiteid");
 		if (Meteor.user()){
 			 Comments.insert({
 	    		body:body,

@@ -86,7 +86,7 @@
 <!-- template that displays individual website entries -->
 <template name="website_item">
 <li>
-	<a href="{{url}}">{{title}}</a><a href="/website/{{_id}}">More details about this place</a>
+	<a href="{{url}}">{{title}}</a><a href="/website/{{_id}}" class="js-moreDetails">More details about this place</a>
 	<p>
 		{{description}}
 	</p>
@@ -119,20 +119,12 @@
 		<p>
 			Added on <span>{{createdOn}}</span>
 		</p>
+		{{> comments_list}}
 		{{> commentSubmit}}
 		</div>
 	</div>
 </template>
 
-
-<template name="postPage">
-  {{> postItem}}
-  <ul class="comments">
-    {{#each comments}}
-      {{> comment}}
-    {{/each}}
-  </ul>
-</template>
 
 <template name="commentSubmit">
   <form name="comment" class="comment-form">
@@ -148,5 +140,25 @@
         </div>
     </div>
   </form>
+</template>
+
+<template name="comments_list">
+	<ul>
+		{{#each comments}}
+		{{>comment_item}}
+		{{/each}}
+	</ul>
+</template>
+
+<template name="comment_item">
+<li class="list-unstyled">
+	<blockquote>
+        <p>{{body}}</p>
+        <footer><cite>{{createdBy}}</cite>,
+          <span>{{createdOn}}</span>
+        </footer>
+    </blockquote>
+	<!-- you will be putting your up and down vote buttons in here! -->
+</li>
 </template>
 
