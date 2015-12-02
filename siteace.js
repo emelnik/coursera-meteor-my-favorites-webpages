@@ -103,6 +103,35 @@ if (Meteor.isClient) {
 		}
 	})
 
+
+	Template.website.events({
+		"click .js-upvote":function(event){
+			// example of how you can access the id for the website in the database
+			// (this is the data context for the template)
+			var website_id = this._id;
+			console.log("Up voting website with id "+website_id);
+			// put the code in here to add a vote to a website!
+			if (Meteor.user()){
+			Websites.update(website_id, {$inc: {upscore: 1} });
+			}
+			return false;// prevent the button from reloading the page
+		}, 
+		"click .js-downvote":function(event){
+
+			// example of how you can access the id for the website in the database
+			// (this is the data context for the template)
+			var website_id = this._id;
+			console.log("Down voting website with id "+website_id);
+
+			// put the code in here to remove a vote from a website!
+			if (Meteor.user()){
+				Websites.update(website_id, {$inc: {downscore: 1} });
+			}
+
+			return false;// prevent the button from reloading the page
+		}
+	})
+
 	Template.website_form.events({
 		"click .js-toggle-website-form":function(event){
 			$("#website_form").toggle('slow');
