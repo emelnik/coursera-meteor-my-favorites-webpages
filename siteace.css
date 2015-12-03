@@ -42,3 +42,13 @@ textarea {
 .js-toggle-website-form {
 	margin-top: 15px;
 }
+
+li.page.disabled.current {
+	color: red;
+}
+.pagination {
+	font-size: 2em;
+}
+searBox ol {
+	list-style: unstyle;
+}

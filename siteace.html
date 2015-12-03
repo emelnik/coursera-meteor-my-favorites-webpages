@@ -174,11 +174,12 @@
 	    {{> EasySearch.Input index=WebpagesIndex }}
     </span>
     </p>
-    <ol>
+    <ol class="list-unstyled">
         {{#EasySearch.Each index=WebpagesIndex }}
             {{>website_item}}
         {{/EasySearch.Each}}
     </ol>
     </div>
+    {{> EasySearch.Pagination index=WebpagesIndex maxPages=100}}
     </div>
   </template>
