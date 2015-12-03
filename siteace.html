@@ -33,15 +33,16 @@
 <template name="main">
 	<div class="container">
 		{{> website_header}}
-		{{> website_form}}
 		{{> searchBox}}
 	</div>
 </template>
 
 	
-<template name="website_header">
-	<h1>Social website aggregator</h1>	
-	<h2>Welcome {{username}}!</h2>
+<template name="website_header">	
+	<div class="jumbotron">
+		<h1>Social website aggregator</h1>	
+		<h2>Welcome {{username}}! {{> website_form}}</h2>
+	</div>	
 </template>
 <template name="website_form">
 	{{#if currentUser}}
