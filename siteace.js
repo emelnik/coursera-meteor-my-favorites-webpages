@@ -8,7 +8,11 @@ Comments = new Mongo.Collection('comments');
 WebpagesIndex = new EasySearch.Index({
   collection: Websites,
   fields: ['title', 'description'],
-  engine: new EasySearch.Minimongo()
+  engine: new EasySearch.Minimongo({
+  	sort: function () {
+      return { upscore: -1 };
+    }
+  })
 });
 
 if (Meteor.isClient) {
