@@ -1,0 +1,61 @@
+/* CSS declarations go here */
+.hidden_div{
+	display:none;
+}
+
+/* style login */
+.navbar-right{
+margin-right: 20px;
+    line-height: 50px;
+}
+textarea {
+	display: block;
+}
+
+/* Form add website styled */
+#website_form {
+    margin-top: 24px;
+    border: 2px solid rgb(204, 204, 204);
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.success-add {
+	padding-left: 20px;
+    font-size: 0.8em;
+    color: green;
+}
+
+.results {
+	padding-bottom: 20px;
+    border-bottom: 3px solid #EEE;
+}
+
+.js-moreDetails, .js-logincommnets {
+	margin-left: 40px;
+}
+
+.searchBox li {
+	margin-bottom: 20px;
+	border-bottom: 1px solid #EEE;
+}
+.js-toggle-website-form {
+	margin-top: 15px;
+}
+li.page.disabled.current {
+	color: red;
+}
+
+searBox ol {
+	list-style: unstyle;
+}
+.pagination{
+	font-size: 1.5em
+}
+li.page.disabled.current {
+	color:red;
+}
+
+.pagination li{
+	cursor: pointer; cursor: hand;
+}
