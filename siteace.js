@@ -81,6 +81,7 @@ if (Meteor.isClient) {
 		}
 	});
 
+
 	/////
 	// template events 
 	/////
@@ -171,8 +172,10 @@ if (Meteor.isClient) {
 	    		description:description, 
 	    		createdOn:new Date(),
 	    		createdBy:Meteor.user()._id	    		
-    		});	
-			}
+    		});
+    		$(".success-add").html("Success!");	
+    		$('.js-save-website-form').closest('form').find("input[type=text]").val("");
+			}			
 			return false;// stop the form submit from reloading the page
 
 		}
@@ -191,7 +194,16 @@ Template.commentSubmit.events({
 	    		createdOn:new Date(),
 	    		createdBy:Meteor.user()._id
     			});	
+			 $(".js-logincommnets").html("comment added successfully");
+			 $(".js-logincommnets").css("color","green");
+			 $('#comment-form').closest('form').find("input[type=text], textarea").val("");
 			}
+			else {
+				$(".js-logincommnets").html("Please, LogIn to submit comments");
+				$(".js-logincommnets").css("color","red");
+				$('#comment-form').closest('form').find("input[type=text], textarea").val("");
+			}
+
 		return false;
 		
 	}
