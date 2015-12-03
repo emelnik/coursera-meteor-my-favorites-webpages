@@ -34,7 +34,7 @@
 	<div class="container">
 		{{> website_header}}
 		{{> website_form}}
-		{{> website_list}}
+		{{> searchBox}}
 	</div>
 </template>
 
@@ -158,3 +158,19 @@
 </li>
 </template>
 
+<template name="searchBox">
+	<div class="container">
+	<div class="row searchBox">
+	<p>Search
+	<span>
+	    {{> EasySearch.Input index=WebpagesIndex }}
+    </span>
+    </p>
+    <ol>
+        {{#EasySearch.Each index=WebpagesIndex }}
+            {{>website_item}}
+        {{/EasySearch.Each}}
+    </ol>
+    </div>
+    </div>
+  </template>
